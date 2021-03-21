@@ -96,8 +96,10 @@ def test():
 
 
 def save_accuracy():
-    acc_dic = {train_acc[i]: valid_acc[i] for i in range(len(train_acc))}
-    utils.save_dictionary('output/accuracy.txt', acc_dic)
+    # 不能使用字典，字典不允许键值相同
+    # acc_dic = {train_acc[i]: valid_acc[i] for i in range(len(train_acc))}
+    acc_array = np.array([train_acc, valid_acc])
+    np.savetxt('output/accuracy.txt', acc_array)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 def save_dictionary(path, dictionary):
     fw = open(path, 'w+')
@@ -15,9 +15,8 @@ def read_dictionary(path):
 
 
 def draw_acc_graph(path):
-    acc_dic = read_dictionary(path)
-    train_acc = list(acc_dic.keys())
-    valid_acc = list(acc_dic.values())
+    acc_array = np.loadtxt(path)
+    train_acc, valid_acc = acc_array.tolist()
     plt.figure(figsize=(20, 10))
     plt.title("Train-Validation Accuracy")
     plt.plot(train_acc, label='train')
